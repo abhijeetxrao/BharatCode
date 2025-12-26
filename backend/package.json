@@ -1,0 +1,27 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/abhijeetxrao/BharatCode#readme",
+  "bugs": {
+    "url": "https://github.com/abhijeetxrao/BharatCode/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhijeetxrao/BharatCode.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^7.2.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.11",
+    "prisma": "^7.2.0"
+  }
+}
