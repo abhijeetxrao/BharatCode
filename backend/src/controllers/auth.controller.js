@@ -123,7 +123,7 @@ export const logout = async (req,res)=>{
     }
   }
 
-  // export const me = async (req,res)=>{
+  export const me = async (req,res)=>{
   
-// }
+}
 
