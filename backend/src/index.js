@@ -1,5 +1,6 @@
 import dotenv from 'dotenv/config';
 import express from 'express';  
+import {problemRoute} from './routes/problem.route.js'
 
 import cookieParser from 'cookie-parser';
 const app = express();
@@ -9,6 +10,9 @@ app.use(cookieParser());
 import authRoutes from './routes/auth.routes.js'
 
 app.use('/api/v1/auth',authRoutes);
+app.use('/api/v1/problem',problemRoute);
+
+
 app.get('/',(req,res)=>{
   res.send("Listeing...");
 })
