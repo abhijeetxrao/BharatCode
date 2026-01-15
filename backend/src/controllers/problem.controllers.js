@@ -1,9 +1,9 @@
 import {pollingBatch, problemId, submitBatch} from '../libs/judge0.lib.js'
-import problemRoute from "../routes/problem.route"
 
 
 export const createProblem=async(req,res)=>{
   const {title, description, difficulty, testCases, tags, examples, constraints, codeSnippets, referenceSolutions} = req.body;
+  
   
   if(req.user.role != "ADMIN")
     return res.status(403).json({message:"Access denied! Only admins can create problems."});
@@ -38,7 +38,7 @@ export const createProblem=async(req,res)=>{
       const newProblem = await db.problem.create({
         title, description, difficulty, testCases, tags, examples, constraints, codeSnippets, referenceSolutions
       })
-      return res.json({newProblem})
+      return res.status(201).json(newProblem)
     }
     
 
@@ -46,7 +46,7 @@ export const createProblem=async(req,res)=>{
 
 
   } catch (error) {
-
+    res.status(400).json("Error is submitting problem",error)
   }
 }
 

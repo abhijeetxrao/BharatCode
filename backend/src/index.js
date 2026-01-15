@@ -1,6 +1,6 @@
 import dotenv from 'dotenv/config';
 import express from 'express';  
-import {problemRoute} from './routes/problem.route.js'
+import problemRoute from './routes/problem.route.js'
 
 import cookieParser from 'cookie-parser';
 const app = express();
