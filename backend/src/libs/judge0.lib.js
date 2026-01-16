@@ -1,19 +1,21 @@
 import axios from 'axios'
-export const submitBatch = async(submission)=>{
-  const {data} = await axios.post(`${process.env.JUDGE0_API_URL}/submissions/?base64_encoded=false&wait=false`, submission)
+export const submitBatch = async(submissions)=>{
+  const {data} = await axios.post(`${process.env.JUDGE0_API_URL}/submissions/batch?base64_encoded=false`, {submissions})
+  
   return data;
 }
 
 const sleep =(ms)=>{
-  return new Promise(resolve=>setTimeout(resolve,ms));
+  new Promise(resolve=>setTimeout(resolve,ms));
 }
 
 export const pollingBatch = async(token)=>{
-  while(true){
-    const tokens = token.join(",");
+  const maxAttempts = 30;
+  let attempts =0;
+  while(attempts<maxAttempts){
     const {data} = await axios.get(`${process.env.JUDGE0_API_URL}/submissions/batch`,{
       params:{
-        tokens:tokens.join(","),
+        tokens:token.join(","),
         base64_encoded:false,
       }
     })
@@ -23,8 +25,10 @@ export const pollingBatch = async(token)=>{
     if(isAllDone){
       return result;
     }
-    sleep(1000);
+    await sleep(1500);
+    attempts++;
   }
+  throw new Error("Judge0 polling timed out.");
 }
 
 

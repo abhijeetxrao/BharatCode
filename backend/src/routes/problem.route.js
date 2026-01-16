@@ -5,7 +5,7 @@ import { createProblem, getAllProblem, updateProblem, getProblemById, deleteProb
 
 const problemRoute = express.Router();
 
-problemRoute.post('create-problem',authMiddleware, checkAdmin, createProblem);
+problemRoute.post('/create-problem',authMiddleware, createProblem);
 problemRoute.get('all-problem',authMiddleware,getAllProblem);
 problemRoute.put('update-problem/:id', authMiddleware, checkAdmin,updateProblem);
 problemRoute.get('problem/:id', authMiddleware, getProblemById);
