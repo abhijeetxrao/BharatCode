@@ -63,7 +63,6 @@ export const getProblemById=async(req,res)=>{}
 
 export const deleteProblem=async(req,res)=>{}
 
-export const checkAllProblems=async(req,res)=>{}
 
 
 
